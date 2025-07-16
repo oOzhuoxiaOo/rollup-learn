@@ -1,12 +1,18 @@
 {
-  "name": "rollup",
+  "name": "rollup-learn",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "rollup": "^4.45.1"
+  },
+  "dependencies": {
+    "@rollup/plugin-json": "^6.1.0"
+  }
 }
