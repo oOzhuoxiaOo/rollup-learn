@@ -1,15 +1,27 @@
-// rollup.config.mjs
-// ---cut-start---
-import json from '@rollup/plugin-json';
-// ---cut-end---
+import typescript from '@rollup/plugin-typescript';
+import del from 'rollup-plugin-delete'
+
+
+
+/**
+ * @type {import('rollup').RollupOptions}
+ */
 export default {
-    input: 'src/main.js',
+    input: 'main.ts',
     plugins: [
-        json()
+        typescript({
+            tsconfig: 'tsconfig.json'
+        }),
+        del({ targets: 'dist/*' })
     ],
-    output: {
-        dir: 'dist',
-        format: 'esm',
-        entryFileNames: 'index.js'
-    }
-};
+    output: [
+        {
+            file: 'dist/index.js',
+            format: 'esm'
+        },
+        {
+            file: 'dist/index.cjs',
+            format: 'cjs'
+        }
+    ]
+}
